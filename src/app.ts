@@ -7,18 +7,30 @@ require('dotenv').config();
 
 export default class App {
 
+  private static instance: App;
   private express = express();
 
+  private constructor() { }
+
+  public static getInstance(): App {
+    if (!App.instance) App.instance = new App();
+    return App.instance;
+  }
+
   run(port: number) {
+    this.getExpress().listen(port, () => {
+      console.log(`Express running at PORT:${port}`);
+    });
+  }
+
+  getExpress() {
     this.express.use(compression());
     this.express.use(cors());
     this.express.use(express.json());
 
     this.useControllers();
 
-    this.express.listen(port, () => {
-      console.log(`Express running at PORT:${port}`);
-    });
+    return this.express;
   }
 
   private useControllers() {
@@ -27,11 +39,6 @@ export default class App {
 
   private getUsersController() {
     return new UsersController();
-  }
-
-  getExpress() {
-    console.log('express');
-    return this.express;
   }
 
 }
