@@ -22,7 +22,7 @@ export default class App {
   }
 
   private useControllers() {
-    this.express.use(this.getUsersController().getRouter());
+    this.express.use('/users', this.getUsersController().getRouter());
   }
 
   private getUsersController() {
@@ -30,6 +30,7 @@ export default class App {
   }
 
   getExpress() {
+    console.log('express');
     return this.express;
   }
 
