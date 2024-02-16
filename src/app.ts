@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
-import UsersController from './controllers/users.controller';
+import { UsersController } from './controllers/users.controller';
 
 require('dotenv').config();
 
@@ -9,8 +9,6 @@ export default class App {
 
   private static instance: App;
   private express = express();
-
-  private constructor() { }
 
   public static getInstance(): App {
     if (!App.instance) App.instance = new App();
@@ -34,11 +32,7 @@ export default class App {
   }
 
   private useControllers() {
-    this.express.use('/users', this.getUsersController().getRouter());
-  }
-
-  private getUsersController() {
-    return new UsersController();
+    this.express.use('/users', new UsersController().getRouter());
   }
 
 }

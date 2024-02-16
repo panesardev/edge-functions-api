@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "",
+    "dev": "nodemon --exec ts-node index.ts",
     "build": "tsc",
     "logs": "vercel logs edge-functions-api.vercel.app",
     "git": "git add . && git commit -m refactor",
