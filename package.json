@@ -2,6 +2,9 @@
   "name": "edge-api",
   "version": "1.0.0",
   "description": "edge-functions-api",
+  "repository": {
+    "url": "https://github.com/panesardev/edge-functions-api.git"
+  },
   "main": "index.ts",
   "scripts": {
     "start": "",
