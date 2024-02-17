@@ -16,9 +16,9 @@ export default class App {
   }
 
   run(port: number) {
-    this.getExpress().listen(port, () => {
-      console.log(`Express running at PORT:${port}`);
-    });
+    this.getExpress().listen(port, () =>
+      console.log(`Express running at PORT:${port}`),
+    );
   }
 
   getExpress() {
